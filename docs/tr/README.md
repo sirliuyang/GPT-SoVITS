@@ -7,12 +7,17 @@ Güçlü Birkaç Örnekli Ses Dönüştürme ve Metinden Konuşmaya Web Arayüz�
 
 <a href="https://trendshift.io/repositories/7033" target="_blank"><img src="https://trendshift.io/api/badge/repositories/7033" alt="RVC-Boss%2FGPT-SoVITS | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 
-<!-- img src="https://counter.seku.su/cmoe?name=gptsovits&theme=r34" /><br> -->
+[![Python](https://img.shields.io/badge/python-3.10--3.12-blue?style=for-the-badge&logo=python)](https://www.python.org)
+[![GitHub release](https://img.shields.io/github/v/release/RVC-Boss/gpt-sovits?style=for-the-badge&logo=github)](https://github.com/RVC-Boss/gpt-sovits/releases)
 
-[![Open In Colab](https://img.shields.io/badge/Colab-F9AB00?style=for-the-badge&logo=googlecolab&color=525252)](https://colab.research.google.com/github/RVC-Boss/GPT-SoVITS/blob/main/colab_webui.ipynb)
-[![License](https://img.shields.io/badge/LICENSE-MIT-green.svg?style=for-the-badge)](https://github.com/RVC-Boss/GPT-SoVITS/blob/main/LICENSE)
-[![Huggingface](https://img.shields.io/badge/🤗%20-online%20demo-yellow.svg?style=for-the-badge)](https://huggingface.co/spaces/lj1995/GPT-SoVITS-v2)
-[![Discord](https://img.shields.io/discord/1198701940511617164?color=%23738ADB&label=Discord&style=for-the-badge)](https://discord.gg/dnrgs5GHfG)
+[![Train In Colab](https://img.shields.io/badge/Colab-Training-F9AB00?style=for-the-badge&logo=googlecolab)](https://colab.research.google.com/github/RVC-Boss/GPT-SoVITS/blob/main/Colab-WebUI.ipynb)
+[![Huggingface](https://img.shields.io/badge/免费在线体验-free_online_demo-yellow.svg?style=for-the-badge&logo=huggingface)](https://lj1995-gpt-sovits-proplus.hf.space/)
+[![Image Size](https://img.shields.io/docker/image-size/xxxxrt666/gpt-sovits/latest?style=for-the-badge&logo=docker)](https://hub.docker.com/r/xxxxrt666/gpt-sovits)
+
+[![简体中文](https://img.shields.io/badge/简体中文-阅读文档-blue?style=for-the-badge&logo=googledocs&logoColor=white)](https://www.yuque.com/baicaigongchang1145haoyuangong/ib3g1e)
+[![English](https://img.shields.io/badge/English-Read%20Docs-blue?style=for-the-badge&logo=googledocs&logoColor=white)](https://rentry.co/GPT-SoVITS-guide#/)
+[![Change Log](https://img.shields.io/badge/Change%20Log-View%20Updates-blue?style=for-the-badge&logo=googledocs&logoColor=white)](https://github.com/RVC-Boss/GPT-SoVITS/blob/main/docs/en/Changelog_EN.md)
+[![License](https://img.shields.io/badge/LICENSE-MIT-green.svg?style=for-the-badge&logo=opensourceinitiative)](https://github.com/RVC-Boss/GPT-SoVITS/blob/main/LICENSE)
 
 [**English**](../../README.md) | [**中文简体**](../cn/README.md) | [**日本語**](../ja/README.md) | [**한국어**](../ko/README.md) | **Türkçe**
 
@@ -55,6 +60,12 @@ https://github.com/RVC-Boss/GPT-SoVITS/assets/129054828/05bee1fa-bdd8-4d85-9350-
 ### Windows
 
 Eğer bir Windows kullanıcısıysanız (win>=10 ile test edilmiştir), [entegre paketi indirin](https://huggingface.co/lj1995/GPT-SoVITS-windows-package/resolve/main/GPT-SoVITS-v3lora-20250228.7z?download=true) ve _go-webui.bat_ dosyasına çift tıklayarak GPT-SoVITS-WebUI'yi başlatın.
+
+```pwsh
+conda create -n GPTSoVits python=3.10
+conda activate GPTSoVits
+pwsh -F install.ps1 --Device <CU126|CU128|CPU> --Source <HF|HF-Mirror|ModelScope> [--DownloadUVR5]
+```
 
 ### Linux
 
@@ -124,8 +135,9 @@ Kod tabanı hızla geliştiği halde Docker imajları daha yavaş yayınlandığ
 
 - En güncel kullanılabilir imaj etiketlerini görmek için [Docker Hub](https://hub.docker.com/r/xxxxrt666/gpt-sovits) adresini kontrol edin
 - Ortamınıza uygun bir imaj etiketi seçin
-- `Lite`, Docker imajında ASR modelleri ve UVR5 modellerinin bulunmadığı anlamına gelir. UVR5 modellerini manuel olarak indirebilirsiniz; ASR modelleri ise gerektiğinde program tarafından otomatik olarak indirilir
+- `Lite`, Docker imajında ASR modelleri ve UVR5 modellerinin **bulunmadığı** anlamına gelir. UVR5 modellerini manuel olarak indirebilirsiniz; ASR modelleri ise gerektiğinde program tarafından otomatik olarak indirilir
 - Docker Compose sırasında, uygun mimariye (amd64 veya arm64) ait imaj otomatik olarak indirilir
+- Docker Compose, mevcut dizindeki **tüm dosyaları** bağlayacaktır. Docker imajını kullanmadan önce lütfen proje kök dizinine geçin ve **en son kodu çekin**
 - Opsiyonel: En güncel değişiklikleri almak için, sağlanan Dockerfile ile yerel olarak imajı kendiniz oluşturabilirsiniz
 
 #### Ortam Değişkenleri
@@ -285,7 +297,7 @@ V1 ortamından V2'yi kullanmak için:
 
 ## V3 Sürüm Notları
 
-### Yeni Özellikler:
+Yeni Özellikler:
 
 1. **Tını benzerliği** daha yüksek olup, hedef konuşmacıyı yakınsamak için daha az eğitim verisi gerekmektedir (tını benzerliği, base model doğrudan kullanılacak şekilde fine-tuning yapılmadan önemli ölçüde iyileştirilmiştir).
 
@@ -293,7 +305,7 @@ V1 ortamından V2'yi kullanmak için:
 
    [daha fazla detay](<https://github.com/RVC-Boss/GPT-SoVITS/wiki/GPT%E2%80%90SoVITS%E2%80%90v3%E2%80%90features-(%E6%96%B0%E7%89%B9%E6%80%A7)>)
 
-### v2 ortamında v3 kullanımı:
+V2 ortamında V3 kullanımı:
 
 1. `pip install -r requirements.txt` ile bazı paketleri güncelleyin.
 
@@ -302,6 +314,38 @@ V1 ortamından V2'yi kullanmak için:
 3. [huggingface](https://huggingface.co/lj1995/GPT-SoVITS/tree/main) üzerinden v3 önceden eğitilmiş modellerini (s1v3.ckpt, s2Gv3.pth ve models--nvidia--bigvgan_v2_24khz_100band_256x klasörünü) indirin ve `GPT_SoVITS/pretrained_models` dizinine yerleştirin.
 
    ek: Ses Süper Çözünürlük modeli için [nasıl indirileceği](../../tools/AP_BWE_main/24kto48k/readme.txt) hakkında bilgi alabilirsiniz.
+
+## V4 Sürüm Notları
+
+Yeni Özellikler:
+
+1. **V4, V3'te görülen non-integer upsample işleminden kaynaklanan metalik ses sorununu düzeltti ve sesin boğuklaşmasını önlemek için doğrudan 48kHz ses çıktısı sunar (V3 sadece 24kHz destekler)**. Yazar, V4'ün V3'ün yerine geçebileceğini belirtmiştir ancak daha fazla test yapılması gerekmektedir.
+   [Daha fazla bilgi](<https://github.com/RVC-Boss/GPT-SoVITS/wiki/GPT%E2%80%90SoVITS%E2%80%90v3v4%E2%80%90features-(%E6%96%B0%E7%89%B9%E6%80%A7)>)
+
+V1/V2/V3 ortamından V4'e geçiş:
+
+1. Bazı bağımlılıkları güncellemek için `pip install -r requirements.txt` komutunu çalıştırın.
+
+2. GitHub'dan en son kodları klonlayın.
+
+3. [huggingface](https://huggingface.co/lj1995/GPT-SoVITS/tree/main) üzerinden V4 ön eğitilmiş modelleri indirin (`gsv-v4-pretrained/s2v4.ckpt` ve `gsv-v4-pretrained/vocoder.pth`) ve bunları `GPT_SoVITS/pretrained_models` dizinine koyun.
+
+## V2Pro Sürüm Notları
+
+Yeni Özellikler:
+
+1. **V2 ile karşılaştırıldığında biraz daha yüksek VRAM kullanımı sağlar ancak V4'ten daha iyi performans gösterir; aynı donanım maliyeti ve hız avantajını korur**.
+   [Daha fazla bilgi](<https://github.com/RVC-Boss/GPT-SoVITS/wiki/GPT%E2%80%90SoVITS%E2%80%90features-(%E5%90%84%E7%89%88%E6%9C%AC%E7%89%B9%E6%80%A7)>)
+
+2. V1/V2 ve V2Pro serisi benzer özelliklere sahipken, V3/V4 de yakın işlevleri paylaşır. Ortalama kalite düşük olan eğitim setleriyle V1/V2/V2Pro iyi sonuçlar verebilir ama V3/V4 veremez. Ayrıca, V3/V4’ün ürettiği ses tonu genel eğitim setine değil, referans ses örneğine daha çok benzemektedir.
+
+V1/V2/V3/V4 ortamından V2Pro'ya geçiş:
+
+1. Bazı bağımlılıkları güncellemek için `pip install -r requirements.txt` komutunu çalıştırın.
+
+2. GitHub'dan en son kodları klonlayın.
+
+3. [huggingface](https://huggingface.co/lj1995/GPT-SoVITS/tree/main) üzerinden V2Pro ön eğitilmiş modelleri indirin (`v2Pro/s2Dv2Pro.pth`, `v2Pro/s2Gv2Pro.pth`, `v2Pro/s2Dv2ProPlus.pth`, `v2Pro/s2Gv2ProPlus.pth`, ve `sv/pretrained_eres2netv2w24s4ep4.ckpt`) ve bunları `GPT_SoVITS/pretrained_models` dizinine koyun.
 
 ## Yapılacaklar Listesi
 
@@ -385,6 +429,7 @@ python ./tools/asr/fasterwhisper_asr.py -i <girdi> -o <çıktı> -l <dil>
 - [Chinese Speech Pretrain](https://github.com/TencentGameMate/chinese_speech_pretrain)
 - [Chinese-Roberta-WWM-Ext-Large](https://huggingface.co/hfl/chinese-roberta-wwm-ext-large)
 - [BigVGAN](https://github.com/NVIDIA/BigVGAN)
+- [eresnetv2](https://modelscope.cn/models/iic/speech_eres2netv2w24s4ep4_sv_zh-cn_16k-common)
 
 ### Tahmin İçin Metin Ön Ucu
 

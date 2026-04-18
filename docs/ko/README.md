@@ -5,12 +5,20 @@
 
 [![madewithlove](https://img.shields.io/badge/made_with-%E2%9D%A4-red?style=for-the-badge&labelColor=orange)](https://github.com/RVC-Boss/GPT-SoVITS)
 
-<img src="https://counter.seku.su/cmoe?name=gptsovits&theme=r34" /><br>
+<a href="https://trendshift.io/repositories/7033" target="_blank"><img src="https://trendshift.io/api/badge/repositories/7033" alt="RVC-Boss%2FGPT-SoVITS | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 
-[![Open In Colab](https://img.shields.io/badge/Colab-F9AB00?style=for-the-badge&logo=googlecolab&color=525252)](https://colab.research.google.com/github/RVC-Boss/GPT-SoVITS/blob/main/colab_webui.ipynb)
-[![License](https://img.shields.io/badge/LICENSE-MIT-green.svg?style=for-the-badge)](https://github.com/RVC-Boss/GPT-SoVITS/blob/main/LICENSE)
-[![Huggingface](https://img.shields.io/badge/🤗%20-online%20demo-yellow.svg?style=for-the-badge)](https://huggingface.co/spaces/lj1995/GPT-SoVITS-v2)
-[![Discord](https://img.shields.io/discord/1198701940511617164?color=%23738ADB&label=Discord&style=for-the-badge)](https://discord.gg/dnrgs5GHfG)
+[![Python](https://img.shields.io/badge/python-3.10--3.12-blue?style=for-the-badge&logo=python)](https://www.python.org)
+[![GitHub release](https://img.shields.io/github/v/release/RVC-Boss/gpt-sovits?style=for-the-badge&logo=github)](https://github.com/RVC-Boss/gpt-sovits/releases)
+
+[![Train In Colab](https://img.shields.io/badge/Colab-Training-F9AB00?style=for-the-badge&logo=googlecolab)](https://colab.research.google.com/github/RVC-Boss/GPT-SoVITS/blob/main/Colab-WebUI.ipynb)
+[![Huggingface](https://img.shields.io/badge/免费在线体验-free_online_demo-yellow.svg?style=for-the-badge&logo=huggingface)](https://lj1995-gpt-sovits-proplus.hf.space/)
+[![Image Size](https://img.shields.io/docker/image-size/xxxxrt666/gpt-sovits/latest?style=for-the-badge&logo=docker)](https://hub.docker.com/r/xxxxrt666/gpt-sovits)
+
+[![简体中文](https://img.shields.io/badge/简体中文-阅读文档-blue?style=for-the-badge&logo=googledocs&logoColor=white)](https://www.yuque.com/baicaigongchang1145haoyuangong/ib3g1e)
+[![English](https://img.shields.io/badge/English-Read%20Docs-blue?style=for-the-badge&logo=googledocs&logoColor=white)](https://rentry.co/GPT-SoVITS-guide#/)
+[![Change Log](https://img.shields.io/badge/Change%20Log-View%20Updates-blue?style=for-the-badge&logo=googledocs&logoColor=white)](https://github.com/RVC-Boss/GPT-SoVITS/blob/main/docs/en/Changelog_EN.md)
+[![License](https://img.shields.io/badge/LICENSE-MIT-green.svg?style=for-the-badge&logo=opensourceinitiative)](https://github.com/RVC-Boss/GPT-SoVITS/blob/main/LICENSE)
+
 
 [**English**](../../README.md) | [**中文简体**](../cn/README.md) | [**日本語**](../ja/README.md) | **한국어** | [**Türkçe**](../tr/README.md)
 
@@ -53,6 +61,12 @@ https://github.com/RVC-Boss/GPT-SoVITS/assets/129054828/05bee1fa-bdd8-4d85-9350-
 ### Windows
 
 Windows 사용자라면 (win>=10에서 테스트됨), [통합 패키지를 다운로드](https://huggingface.co/lj1995/GPT-SoVITS-windows-package/resolve/main/GPT-SoVITS-v3lora-20250228.7z?download=true)한 후 압축을 풀고 _go-webui.bat_ 파일을 더블 클릭하면 GPT-SoVITS-WebUI를 시작할 수 있습니다.
+
+```pwsh
+conda create -n GPTSoVits python=3.10
+conda activate GPTSoVits
+pwsh -F install.ps1 --Device <CU126|CU128|CPU> --Source <HF|HF-Mirror|ModelScope> [--DownloadUVR5]
+```
 
 ### Linux
 
@@ -122,8 +136,9 @@ brew install ffmpeg
 
 - [Docker Hub](https://hub.docker.com/r/xxxxrt666/gpt-sovits)에서 최신 이미지 태그를 확인하세요
 - 환경에 맞는 적절한 이미지 태그를 선택하세요
-- `Lite` 는 Docker 이미지에 ASR 모델과 UVR5 모델이 포함되어 있지 않음을 의미합니다. UVR5 모델은 사용자가 직접 다운로드해야 하며, ASR 모델은 필요 시 프로그램이 자동으로 다운로드합니다
+- `Lite` 는 Docker 이미지에 ASR 모델과 UVR5 모델이 **포함되어 있지 않음**을 의미합니다. UVR5 모델은 사용자가 직접 다운로드해야 하며, ASR 모델은 필요 시 프로그램이 자동으로 다운로드합니다
 - Docker Compose 실행 시, 해당 아키텍처에 맞는 이미지(amd64 또는 arm64)가 자동으로 다운로드됩니다
+- Docker Compose는 현재 디렉터리의 **모든 파일**을 마운트합니다. Docker 이미지를 사용하기 전에 프로젝트 루트 디렉터리로 이동하여 코드를 **최신 상태로 업데이트**하세요
 - 선택 사항: 최신 변경사항을 반영하려면 제공된 Dockerfile을 사용하여 로컬에서 직접 이미지를 빌드할 수 있습니다
 
 #### 환경 변수
@@ -299,6 +314,38 @@ v2 환경에서 v3 사용하기:
 
    추가: 오디오 슈퍼 해상도 모델에 대해서는 [다운로드 방법](../../tools/AP_BWE_main/24kto48k/readme.txt)을 참고하세요.
 
+## V4 릴리스 노트
+
+신규 기능:
+
+1. **V4는 V3에서 발생하는 비정수 배율 업샘플링으로 인한 금속성 잡음 문제를 수정했으며, 소리가 먹먹해지는 것을 방지하기 위해 기본적으로 48kHz 오디오를 출력합니다 (V3는 기본적으로 24kHz만 지원)**. 개발자는 V4를 V3의 직접적인 대체 버전으로 보고 있지만 추가 테스트가 필요합니다.
+   [자세히 보기](<https://github.com/RVC-Boss/GPT-SoVITS/wiki/GPT%E2%80%90SoVITS%E2%80%90v3v4%E2%80%90features-(%E6%96%B0%E7%89%B9%E6%80%A7)>)
+
+V1/V2/V3 환경에서 V4로 전환 방법:
+
+1. 일부 의존 패키지를 업데이트하기 위해 `pip install -r requirements.txt` 명령어를 실행하세요.
+
+2. GitHub에서 최신 코드를 클론하세요.
+
+3. [huggingface](https://huggingface.co/lj1995/GPT-SoVITS/tree/main)에서 V4 사전 학습 모델(`gsv-v4-pretrained/s2v4.ckpt` 및 `gsv-v4-pretrained/vocoder.pth`)을 다운로드하고 `GPT_SoVITS/pretrained_models` 디렉토리에 넣으세요.
+
+## V2Pro 릴리스 노트
+
+신규 기능:
+
+1. **V2보다 약간 높은 VRAM 사용량이지만 성능은 V4보다 우수하며, V2 수준의 하드웨어 비용과 속도를 유지합니다**.
+   [자세히 보기](<https://github.com/RVC-Boss/GPT-SoVITS/wiki/GPT%E2%80%90SoVITS%E2%80%90features-(%E5%90%84%E7%89%88%E6%9C%AC%E7%89%B9%E6%80%A7)>)
+
+2. V1/V2와 V2Pro 시리즈는 유사한 특징을 가지며, V3/V4도 비슷한 기능을 가지고 있습니다. 평균 음질이 낮은 학습 데이터셋에서는 V1/V2/V2Pro가 좋은 결과를 내지만 V3/V4는 그렇지 못합니다. 또한 V3/V4의 합성 음색은 전체 학습 데이터셋보다는 참고 음성에 더 가깝습니다.
+
+V1/V2/V3/V4 환경에서 V2Pro로 전환 방법:
+
+1. 일부 의존 패키지를 업데이트하기 위해 `pip install -r requirements.txt` 명령어를 실행하세요.
+
+2. GitHub에서 최신 코드를 클론하세요.
+
+3. [huggingface](https://huggingface.co/lj1995/GPT-SoVITS/tree/main)에서 V2Pro 사전 학습 모델(`v2Pro/s2Dv2Pro.pth`, `v2Pro/s2Gv2Pro.pth`, `v2Pro/s2Dv2ProPlus.pth`, `v2Pro/s2Gv2ProPlus.pth`, 및 `sv/pretrained_eres2netv2w24s4ep4.ckpt`)을 다운로드하고 `GPT_SoVITS/pretrained_models` 디렉토리에 넣으세요.
+
 ## 할 일 목록
 
 - [x] **최우선순위:**
@@ -382,6 +429,7 @@ python ./tools/asr/fasterwhisper_asr.py -i <input> -o <output> -l <language> -p 
 - [Chinese Speech Pretrain](https://github.com/TencentGameMate/chinese_speech_pretrain)
 - [Chinese-Roberta-WWM-Ext-Large](https://huggingface.co/hfl/chinese-roberta-wwm-ext-large)
 - [BigVGAN](https://github.com/NVIDIA/BigVGAN)
+- [eresnetv2](https://modelscope.cn/models/iic/speech_eres2netv2w24s4ep4_sv_zh-cn_16k-common)
 
 ### 추론용 텍스트 프론트엔드
 

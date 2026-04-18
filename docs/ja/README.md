@@ -5,12 +5,20 @@
 
 [![madewithlove](https://img.shields.io/badge/made_with-%E2%9D%A4-red?style=for-the-badge&labelColor=orange)](https://github.com/RVC-Boss/GPT-SoVITS)
 
-<img src="https://counter.seku.su/cmoe?name=gptsovits&theme=r34" /><br>
+<a href="https://trendshift.io/repositories/7033" target="_blank"><img src="https://trendshift.io/api/badge/repositories/7033" alt="RVC-Boss%2FGPT-SoVITS | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 
-[![Open In Colab](https://img.shields.io/badge/Colab-F9AB00?style=for-the-badge&logo=googlecolab&color=525252)](https://colab.research.google.com/github/RVC-Boss/GPT-SoVITS/blob/main/colab_webui.ipynb)
-[![License](https://img.shields.io/badge/LICENSE-MIT-green.svg?style=for-the-badge)](https://github.com/RVC-Boss/GPT-SoVITS/blob/main/LICENSE)
-[![Huggingface](https://img.shields.io/badge/🤗%20-online%20demo-yellow.svg?style=for-the-badge)](https://huggingface.co/spaces/lj1995/GPT-SoVITS-v2)
-[![Discord](https://img.shields.io/discord/1198701940511617164?color=%23738ADB&label=Discord&style=for-the-badge)](https://discord.gg/dnrgs5GHfG)
+[![Python](https://img.shields.io/badge/python-3.10--3.12-blue?style=for-the-badge&logo=python)](https://www.python.org)
+[![GitHub release](https://img.shields.io/github/v/release/RVC-Boss/gpt-sovits?style=for-the-badge&logo=github)](https://github.com/RVC-Boss/gpt-sovits/releases)
+
+[![Train In Colab](https://img.shields.io/badge/Colab-Training-F9AB00?style=for-the-badge&logo=googlecolab)](https://colab.research.google.com/github/RVC-Boss/GPT-SoVITS/blob/main/Colab-WebUI.ipynb)
+[![Huggingface](https://img.shields.io/badge/免费在线体验-free_online_demo-yellow.svg?style=for-the-badge&logo=huggingface)](https://lj1995-gpt-sovits-proplus.hf.space/)
+[![Image Size](https://img.shields.io/docker/image-size/xxxxrt666/gpt-sovits/latest?style=for-the-badge&logo=docker)](https://hub.docker.com/r/xxxxrt666/gpt-sovits)
+
+[![简体中文](https://img.shields.io/badge/简体中文-阅读文档-blue?style=for-the-badge&logo=googledocs&logoColor=white)](https://www.yuque.com/baicaigongchang1145haoyuangong/ib3g1e)
+[![English](https://img.shields.io/badge/English-Read%20Docs-blue?style=for-the-badge&logo=googledocs&logoColor=white)](https://rentry.co/GPT-SoVITS-guide#/)
+[![Change Log](https://img.shields.io/badge/Change%20Log-View%20Updates-blue?style=for-the-badge&logo=googledocs&logoColor=white)](https://github.com/RVC-Boss/GPT-SoVITS/blob/main/docs/en/Changelog_EN.md)
+[![License](https://img.shields.io/badge/LICENSE-MIT-green.svg?style=for-the-badge&logo=opensourceinitiative)](https://github.com/RVC-Boss/GPT-SoVITS/blob/main/LICENSE)
+
 
 [**English**](../../README.md) | [**中文简体**](../cn/README.md) | **日本語** | [**한국어**](../ko/README.md) | [**Türkçe**](../tr/README.md)
 
@@ -122,8 +130,9 @@ brew install ffmpeg
 
 - [Docker Hub](https://hub.docker.com/r/xxxxrt666/gpt-sovits) で最新のイメージタグを確認してください
 - 環境に合った適切なイメージタグを選択してください
-- `Lite` とは、Docker イメージに ASR モデルおよび UVR5 モデルが含まれていないことを意味します. UVR5 モデルは手動でダウンロードし、ASR モデルは必要に応じてプログラムが自動的にダウンロードします
+- `Lite` とは、Docker イメージに ASR モデルおよび UVR5 モデルが**含まれていない**ことを意味します. UVR5 モデルは手動でダウンロードし、ASR モデルは必要に応じてプログラムが自動的にダウンロードします
 - Docker Compose 実行時に、対応するアーキテクチャ (amd64 または arm64) のイメージが自動的に取得されます
+- Docker Compose は現在のディレクトリ内の**すべてのファイル**をマウントします. Docker イメージを使用する前に、プロジェクトのルートディレクトリに移動し、**コードを最新の状態に更新**してください
 - オプション：最新の変更を反映させるため、提供されている Dockerfile を使ってローカルでイメージをビルドすることも可能です
 
 #### 環境変数
@@ -299,6 +308,38 @@ v2 環境から v3 を使用する方法:
 
    追加: 音声超解像モデルについては、[ダウンロード方法](../../tools/AP_BWE_main/24kto48k/readme.txt)を参照してください.
 
+## V4 リリースノート
+
+新機能:
+
+1. **V4 は、V3 で発生していた非整数倍アップサンプリングによる金属音の問題を修正し、音声がこもる問題を防ぐためにネイティブに 48kHz 音声を出力します（V3 はネイティブに 24kHz 音声のみ出力）**. 作者は V4 を V3 の直接的な置き換えとして推奨していますが、さらなるテストが必要です.
+   [詳細はこちら](<https://github.com/RVC-Boss/GPT-SoVITS/wiki/GPT%E2%80%90SoVITS%E2%80%90v3v4%E2%80%90features-(%E6%96%B0%E7%89%B9%E6%80%A7)>)
+
+V1/V2/V3 環境から V4 への移行方法:
+
+1. `pip install -r requirements.txt` を実行して一部の依存パッケージを更新してください.
+
+2. GitHub から最新のコードをクローンします.
+
+3. [huggingface](https://huggingface.co/lj1995/GPT-SoVITS/tree/main) から V4 の事前学習済みモデル (`gsv-v4-pretrained/s2v4.ckpt` および `gsv-v4-pretrained/vocoder.pth`) をダウンロードし、`GPT_SoVITS/pretrained_models` ディレクトリへ配置してください.
+
+## V2Pro リリースノート
+
+新機能:
+
+1. **V2 と比較してやや高いメモリ使用量ですが、ハードウェアコストと推論速度は維持しつつ、V4 よりも高い性能と音質を実現します. **
+   [詳細はこちら](<https://github.com/RVC-Boss/GPT-SoVITS/wiki/GPT%E2%80%90SoVITS%E2%80%90features-(%E5%90%84%E7%89%88%E6%9C%AC%E7%89%B9%E6%80%A7)>)
+
+2. V1/V2 と V2Pro シリーズは類似した特徴を持ち、V3/V4 も同様の機能を持っています. 平均音質が低いトレーニングセットの場合、V1/V2/V2Pro は良好な結果を出すことができますが、V3/V4 では対応できません. また、V3/V4 の合成音声はトレーニング全体ではなく、より参考音声に寄った音質になります.
+
+V1/V2/V3/V4 環境から V2Pro への移行方法:
+
+1. `pip install -r requirements.txt` を実行して一部の依存パッケージを更新してください.
+
+2. GitHub から最新のコードをクローンします.
+
+3. [huggingface](https://huggingface.co/lj1995/GPT-SoVITS/tree/main) から V2Pro の事前学習済みモデル (`v2Pro/s2Dv2Pro.pth`, `v2Pro/s2Gv2Pro.pth`, `v2Pro/s2Dv2ProPlus.pth`, `v2Pro/s2Gv2ProPlus.pth`, および `sv/pretrained_eres2netv2w24s4ep4.ckpt`) をダウンロードし、`GPT_SoVITS/pretrained_models` ディレクトリへ配置してください.
+
 ## Todo リスト
 
 - [x] **優先度 高:**
@@ -381,6 +422,7 @@ python ./tools/asr/fasterwhisper_asr.py -i <input> -o <output> -l <language> -p 
 - [Chinese Speech Pretrain](https://github.com/TencentGameMate/chinese_speech_pretrain)
 - [Chinese-Roberta-WWM-Ext-Large](https://huggingface.co/hfl/chinese-roberta-wwm-ext-large)
 - [BigVGAN](https://github.com/NVIDIA/BigVGAN)
+- [eresnetv2](https://modelscope.cn/models/iic/speech_eres2netv2w24s4ep4_sv_zh-cn_16k-common)
 
 ### 推論用テキストフロントエンド
 

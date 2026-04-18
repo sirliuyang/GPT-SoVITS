@@ -118,13 +118,13 @@ def run(rank, n_gpus, hps):
     collate_fn = TextAudioSpeakerCollate()
     train_loader = DataLoader(
         train_dataset,
-        num_workers=6,
+        num_workers=5,
         shuffle=False,
         pin_memory=True,
         collate_fn=collate_fn,
         batch_sampler=train_sampler,
         persistent_workers=True,
-        prefetch_factor=4,
+        prefetch_factor=3,
     )
     # if rank == 0:
     #     eval_dataset = TextAudioSpeakerLoader(hps.data.validation_files, hps.data, val=True)
@@ -204,12 +204,12 @@ def run(rank, n_gpus, hps):
             print(
                 "loaded pretrained %s" % hps.train.pretrained_s2G,
                 net_g.module.load_state_dict(
-                    torch.load(hps.train.pretrained_s2G, map_location="cpu")["weight"],
+                    torch.load(hps.train.pretrained_s2G, map_location="cpu", weights_only=False)["weight"],
                     strict=False,
                 )
                 if torch.cuda.is_available()
                 else net_g.load_state_dict(
-                    torch.load(hps.train.pretrained_s2G, map_location="cpu")["weight"],
+                    torch.load(hps.train.pretrained_s2G, map_location="cpu", weights_only=False)["weight"],
                     strict=False,
                 ),
             )  ##测试不加载优化器
