@@ -28,15 +28,15 @@ def create_model(language="zh"):
         path_asr = "tools/asr/models/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch"
         snapshot_download(
             "iic/speech_fsmn_vad_zh-cn-16k-common-pytorch",
-            local_dir="tools/asr/models/speech_fsmn_vad_zh-cn-16k-common-pytorch",
+            cache_dir="tools/asr/models/speech_fsmn_vad_zh-cn-16k-common-pytorch",
         )
         snapshot_download(
             "iic/punc_ct-transformer_zh-cn-common-vocab272727-pytorch",
-            local_dir="tools/asr/models/punc_ct-transformer_zh-cn-common-vocab272727-pytorch",
+            cache_dir="tools/asr/models/punc_ct-transformer_zh-cn-common-vocab272727-pytorch",
         )
         snapshot_download(
             "iic/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch",
-            local_dir="tools/asr/models/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch",
+            cache_dir="tools/asr/models/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch",
         )
         model_revision = "v2.0.4"
         vad_model_revision = punc_model_revision = "v2.0.4"
