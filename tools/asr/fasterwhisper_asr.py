@@ -94,8 +94,7 @@ def download_model(model_size: str):
         print(f"Downloading model from ModelScope: {repo_id} to {model_path}")
         snapshot_download_ms(
             repo_id,
-            local_dir=model_path,
-            allow_patterns=files,
+            cache_dir=model_path
         )
         return model_path + f"/faster-whisper-{model_size}".replace("whisper-distil", "distil-whisper")
     return model_path
